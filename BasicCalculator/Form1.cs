@@ -237,14 +237,14 @@ namespace BasicCalculator
         private void DeleteTextValue()
         {
             // If we don't have a value to delete, return
-            if (this.UserInputText.Text.Length < this.UserInputText.SelectionStart + 1)
+            if (this.UserInputText.Text.Length < this.UserInputText.SelectionStart || this.UserInputText.SelectionStart == 0)
                 return;
 
             // Remember selection start
-            var selectionStrart = this.UserInputText.SelectionStart;
+            var selectionStrart = this.UserInputText.SelectionStart - 1;
 
             // Delete the character to the right of the selection
-            this.UserInputText.Text = this.UserInputText.Text.Remove(this.UserInputText.SelectionStart, 1);
+            this.UserInputText.Text = this.UserInputText.Text.Remove(this.UserInputText.SelectionStart - 1, 1);
 
 
             // Restore the selection start
